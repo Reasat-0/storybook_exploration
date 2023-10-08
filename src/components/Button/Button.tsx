@@ -1,6 +1,6 @@
 import React from "react";
 // import classNames from "classnames";
-import "./button.css";
+import "./Button.css";
 
 export interface ButtonProps {
   /**
@@ -23,6 +23,8 @@ export interface ButtonProps {
    * Optional click handler
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  background: string;
+  fontSize: string;
 }
 
 /**
@@ -34,12 +36,18 @@ const Button = ({
   size = "medium",
   onClick,
   label,
+  background,
+  fontSize,
 }: ButtonProps) => {
   return (
     <button
       type="button"
       className={`storybook-button storybook-button--${size} storybook-button--${type}`}
-      style={textColor ? { color: textColor } : {}}
+      style={{
+        color: textColor ? textColor : "",
+        background: background || "",
+        fontSize: fontSize || "",
+      }}
       onClick={onClick}
     >
       {label}
